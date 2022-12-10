@@ -2,18 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>PDIP STORE</title>
+    <title>@yield('title')</title>
     <meta name="author" content="TBD-Group-2">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); </style>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div class="navbar">
 
         <nav class="bg-white border-gray-200 px- sm:px-4 py-2.5 rounded dark:bg-gray-900 ">
-            <div class="container flex flex-wrap items-center justify-between mx-auto">
+            <div class="container flex flex-wrap items-center justify-between mx-auto px-20">
                 <a href='/' class="flex items-center">
                     <img src="https://upload.wikimedia.org/wikipedia/id/thumb/9/9c/PDI_Perjuangan.png/180px-PDI_Perjuangan.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
-                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PDIP STORE</span>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">NAV CONSIGN STORE</span>
                 </a>
                 <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
@@ -40,10 +48,11 @@
                 </div>
             </div>
         </nav>
-
     </div>
     <section>
-
+        <div class="container">
+            @yield('content')
+        </div>
     </section>
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
