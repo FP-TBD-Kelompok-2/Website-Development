@@ -14,7 +14,10 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $response = Http::get('https://formal-audio-370910.as.r.appspot.com/hp?verify=0');
+//        $response = Http::get('https://formal-audio-370910.as.r.appspot.com/hp?verify=0');
+//        $response = request('https://formal-audio-370910.as.r.appspot.com/hp',['verify'=>false]);
+        $response = Http::withOptions(['verify' => false])->get('https://formal-audio-370910.as.r.appspot.com/hp');
+
         return view('home', ['products' => $response->json()]);
     }
 
@@ -48,8 +51,8 @@ class ProductController extends Controller
     public function show($id)
     {
         //show product details
-        $response = Http::get('https://formal-audio-370910.as.r.appspot.com/hp/'.$id.'?verify=0');
-//        $client->request('GET', 'https://somewebsite.com', ['verify' => false]);
+//        $response = Http::get('https://formal-audio-370910.as.r.appspot.com/hp/'.$id.'?verify=0');
+        $response = Http::withOptions(['verify' => false])->get('https://formal-audio-370910.as.r.appspot.com/hp/'.$id);
         $title = $response->json()['device_name'];
         return view('product', ['product' => $response->json(), 'title' => $title]);
     }
