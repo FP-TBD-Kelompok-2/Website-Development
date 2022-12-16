@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,11 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/', [ProductController::class, 'index']);
-//Route::get('/product/<> ', [ProductController::class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::post('/product/process', [ProductController::class, 'process']);
+
+// Cart
+Route::get('/cart', [TransactionController::class, 'cart']);
+
+// Checkout
+Route::get('/checkout', [TransactionController::class, 'checkout']);
