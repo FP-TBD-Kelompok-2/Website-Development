@@ -13,7 +13,7 @@
 
     <dl class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
         <div class="flex flex-col pb-3">
-            <dt class="mb-1 text-gray-500 md:text-md dark:text-gray-400">Email address</dt>
+            <dt class="mb-1 text-gray-500 md:text-md dark:text-gray-400 text-xs">Email address</dt>
             <dd class="text-md font-semibold">{{ $detailUser['email'] }}</dd>
         </div>
         <div class="flex flex-col py-3">
@@ -27,7 +27,21 @@
     </dl>
 
     <hr class="mt-4">
-    <h5 class="pt-4">Informasi produk</h5>
+    <h5 class="pt-4 mb-4 font-semibold">Informasi produk</h5>
+    @foreach($checkout as $c)
+
+        <div class="flex flex-col my-2 lg:w-max items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ $c['img'] }}" alt="">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-lg tracking-tight text-gray-900 dark:text-white">{{$c['device_name']}} - {{ $c['device_storage'] }} GB </h5>
+                <div class="flex flex-row">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
 
 
 </div>
