@@ -19,10 +19,10 @@ class ProductController extends Controller
 //        $response = request('https://formal-audio-370910.as.r.appspot.com/hp',['verify'=>false]);
 //        Alert::success('Congrats', 'You\'ve Successfully Registered');
         $response = Http::withOptions(['verify' => false])->get('https://formal-audio-370910.as.r.appspot.com/hp');
+        $recommendation = Http::withOptions(['verify' => false])->get('http://127.0.0.1:5000/product/rank');
 
 
-
-        return view('home', ['products' => $response->json()]);
+        return view('home', ['products' => $response->json(), 'recommendation' => $recommendation->json()]);
     }
 
     /**
@@ -121,6 +121,7 @@ class ProductController extends Controller
                 'user_id' => $request->user_id,
                 'quantity' => $request->quantity,
             ]);
+
             return redirect()->route('checkout');
         }
         return $request->all();

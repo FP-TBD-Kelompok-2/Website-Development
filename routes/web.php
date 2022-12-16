@@ -23,6 +23,7 @@ Route::post('/product/process', [ProductController::class, 'process']);
 
 // Cart
 Route::get('/cart', [TransactionController::class, 'cart']);
+Route::post('/cart/process', [TransactionController::class, 'process']);
 
 // Checkout
 Route::get('/checkout', [TransactionController::class, 'checkout']);
