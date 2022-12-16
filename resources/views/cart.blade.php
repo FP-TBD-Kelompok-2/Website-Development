@@ -20,13 +20,13 @@
                 <p class="pt-2 text-xl pb-2">Total : {{$c['total_harga']}}</p>
             </div>
             <div class="lg:pt-8">
-                <form action="/cart/delete" method="post">
+                <form action="/cart/process" method="post">
                     {{@csrf_field()}}
                     <input type="hidden" name="id_cart" value="{{$c['id_hp']}}">
-                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                    <button type="submit" name="button" value="delete" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                         Hapus
                     </button>
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    <button type="submit" name="button" value="buy" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                         Beli Sekarang
                     </button>
                 </form>
