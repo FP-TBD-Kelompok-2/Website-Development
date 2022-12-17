@@ -159,8 +159,21 @@ class TransactionController extends Controller
         ]);
 
         Http::withOptions(['verify' => false])->delete('https://formal-audio-370910.as.r.appspot.com/checkout/clear');
+
+        $detail_hp = Http::withOptions(['verify' => false])->get('https://formal-audio-370910.as.r.appspot.com/hp/'.$request['id_hp']);
+        $stock = $detail_hp->json()['stock'];
+
+        $newStock = $stock - $request['qty_order'];
+
+        Http::withOptions(['verify' => false])->post('https://formal-audio-370910.as.r.appspot.com/hp/stock',[
+            'stock' => $newStock,
+            'id_hp' => $request['id_hp'],
+        ]);
+
+
         alert()->success($responseOrder->json()['msg'],'Happy Shopping 😊');
         return redirect('order');
+//        return $request->all();
     }
 
     public function showOrder()
