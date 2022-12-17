@@ -6,6 +6,7 @@
 
 @endsection
 @section('content')
+@section('cart-tag', 'class=text-blue-600')
 {{--    {{dd(sizeof($cart))}}--}}
 
 {{--    {{dd($cart)}}--}}

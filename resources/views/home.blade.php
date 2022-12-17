@@ -2,6 +2,8 @@
 
 @section('title', 'Welcome to NAV Consign Store')
 
+@section('home-tag', 'class=text-blue-600')
+
 @section('content')
 {{--    {{ dd($recommendation) }}--}}
     <div class="px-48 pt-8">

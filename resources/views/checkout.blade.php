@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Checkout')
+@section('checkout-tag', 'class=text-blue-600')
 
 @section('nav')
 
@@ -26,11 +27,11 @@
                 <dd class="text-md font-semibold">{{ $detailUser['email'] }}</dd>
             </div>
             <div class="flex flex-col py-3">
-                <dt class="mb-1 text-gray-500 md:text-md dark:text-gray-400">Home address</dt>
+                <dt class="mb-1 text-gray-500 text-xs dark:text-gray-400">Home address</dt>
                 <dd class="text-md font-semibold">{{ $detailUser['address'] }}</dd>
             </div>
             <div class="flex flex-col pt-3">
-                <dt class="mb-1 text-gray-500 md:text-md dark:text-gray-400">Phone number</dt>
+                <dt class="mb-1 text-gray-500 text-xs dark:text-gray-400">Phone number</dt>
                 <dd class="text-md font-semibold">{{ $detailUser['phone_number'] }}</dd>
             </div>
         </dl>
