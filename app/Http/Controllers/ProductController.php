@@ -19,7 +19,7 @@ class ProductController extends Controller
 //        $response = request('https://formal-audio-370910.as.r.appspot.com/hp',['verify'=>false]);
 //        Alert::success('Congrats', 'You\'ve Successfully Registered');
         $response = Http::withOptions(['verify' => false])->get('https://formal-audio-370910.as.r.appspot.com/hp');
-        $recommendation = Http::withOptions(['verify' => false])->get('http://127.0.0.1:5000/product/rank');
+        $recommendation = Http::withOptions(['verify' => false])->get('https://formal-audio-370910.as.r.appspot.com/product/rank');
 
 
         return view('home', ['products' => $response->json(), 'recommendation' => $recommendation->json()]);
@@ -109,21 +109,26 @@ class ProductController extends Controller
                 'total_harga' => $total_harga ,
                 'gambar_hp' => $request->gambar_hp,
             ]);
-//            return redirect()->route('cart');
             alert()->success($response->json()['msg'],'Happy Shopping 😊');
             return redirect('/product/'.$request->id_hp);
-
-//            return [ $request->qty_order,  $request->qty_stock];
         }
         else if($request->button == 'buy'){
-            $response = Http::withOptions(['verify' => false])->post('https://formal-audio-370910.as.r.appspot.com/checkout', [
-                'device_id' => $request->device_id,
-                'user_id' => $request->user_id,
-                'quantity' => $request->quantity,
-            ]);
 
-            return redirect()->route('checkout');
+            $response = Http::withOptions(['verify' => false])->post('https://formal-audio-370910.as.r.appspot.com/checkout/add', [
+                'device_name' => $request->device_name,
+                'device_brand' => $request->device_brand,
+                'device_storage' => $request->device_storage,
+                'device_connectivity' => $request->device_connectivity,
+                'price' => $request->price,
+                'color' => $request->color,
+                'img' => $request->gambar_hp,
+                'id_hp' => $request->id_hp,
+                'qty_order' => $request->qty_order,
+
+            ]);
+            alert()->success($response->json()['msg'],'Happy Shopping 😊');
+            return redirect('/product/'.$request->id_hp);
         }
-        return $request->all();
+        return 'error';
     }
 }
